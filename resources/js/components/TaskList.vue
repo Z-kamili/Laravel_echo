@@ -12,7 +12,8 @@
     export default {
         data(){
             return {
-                tasks:[],
+                // tasks:[],
+                project:this.dataProject,
                 newTask:''
             };
 
@@ -24,9 +25,15 @@
             });
         },
         methods:{
+
+            save(){
+                axios.post(`api/projects/${this.project.id}/tasks`,{body:this.newTask})
+                .then(response => response.data)
+                .then(this.addTask);
+            },
             addTask(){
-                axios.post('/tasks',{body:this.newTask});
-                this.tasks.push(this.newTask);
+               
+                this.project.tasks.push(this.newTask);
                 this.newTask = '';
             }
         }
