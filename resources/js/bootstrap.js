@@ -1,5 +1,19 @@
 window._ = require('lodash');
 
+// import Echo from 'laravel-echo';
+ 
+// const client = require('pusher-js');
+ 
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key:'c24f77c83e8807f2c073',
+//     client: client
+// });
+
+try {
+    require('bootstrap');
+} catch (e) {}
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -26,7 +40,3 @@ window.Echo = new Echo({
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     forceTLS: true
 });
-
-window.Echo.channel('orders').listen('OrderStatusUpdated',e=>{
-    console.log('Order status with annas been updated behind the scenes.' + e.order.id);
-})
