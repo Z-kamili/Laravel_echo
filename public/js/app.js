@@ -5282,14 +5282,11 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/tasks').then(function (response) {
-      return _this.tasks = response.data;
-    });
+    // axios.get('/tasks').then(response =>(this.tasks = response.data));
     window.Echo.channel('tasks').listen('TaskCreated', function (_ref) {
       var task = _ref.task;
 
-      // console.log('create');
-      _this.tasks.push(task.body);
+      _this.addTask($task);
     });
   },
   methods: {

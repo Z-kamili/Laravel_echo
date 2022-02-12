@@ -18,10 +18,9 @@
 
         },
         created(){
-            axios.get('/tasks').then(response =>(this.tasks = response.data));
+            // axios.get('/tasks').then(response =>(this.tasks = response.data));
             window.Echo.channel('tasks').listen('TaskCreated',({task})=>{
-                // console.log('create');
-                this.tasks.push(task.body);
+                this.addTask($task)
             });
         },
         methods:{
